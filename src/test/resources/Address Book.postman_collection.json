@@ -1,0 +1,464 @@
+{
+  "info": {
+    "_postman_id": "27e6ce8e-74eb-41b2-ad7d-373c04e1d33a",
+    "name": "Address Book",
+    "description": "# Address Book REST API\n\nThis Spring Boot application provides a range of endpoints for the maintenance of address books for multiple users\n\n* each user can have multiple address books\n* each address book can contain 0 or more contacts\n* each contact has a name and 0 or more phone numbers\n\n# Endpoints\n\n* The `baseUrl` variable should be set to `http://localhost:8081/api` when running in a docker container as described in the README",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "User",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/user/{{userId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "user",
+            "{{userId}}"
+          ]
+        },
+        "description": "Get the user matching the ID"
+      },
+      "response": []
+    },
+    {
+      "name": "User",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Germaine de Stael\",\n    \"username\": \"germaine\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/user",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "user"
+          ]
+        },
+        "description": "Add a user"
+      },
+      "response": []
+    },
+    {
+      "name": "User",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Germaine de Stael-Holstein\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/user/{{userId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "user",
+            "{{userId}}"
+          ]
+        },
+        "description": "Partially update a user"
+      },
+      "response": []
+    },
+    {
+      "name": "User",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/user/{{userId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "user",
+            "{{userId}}"
+          ]
+        },
+        "description": "Delete a user"
+      },
+      "response": []
+    },
+    {
+      "name": "Address Book",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/addressbook/{{addressBookId1}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "addressbook",
+            "{{addressBookId1}}"
+          ]
+        },
+        "description": "Get the address book matching the ID"
+      },
+      "response": []
+    },
+    {
+      "name": "Address Books",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/addressbooks?nameSearch={{nameSearch}}&userId={{userId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "addressbooks"
+          ],
+          "query": [
+            {
+              "key": "nameSearch",
+              "value": "{{nameSearch}}"
+            },
+            {
+              "key": "userId",
+              "value": "{{userId}}"
+            }
+          ]
+        },
+        "description": "Get all address books matching the search criteria - a partial name search or an exact owner (user) ID search"
+      },
+      "response": []
+    },
+    {
+      "name": "Address Book",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"My next address book\",\n    \"ownerId\": \"{{userId}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addressbook",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "addressbook"
+          ]
+        },
+        "description": "Add an address book"
+      },
+      "response": []
+    },
+    {
+      "name": "Address Book",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"My patched address book\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addressbook/{{addressBookId1}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "addressbook",
+            "{{addressBookId1}}"
+          ]
+        },
+        "description": "Partially update an address book"
+      },
+      "response": []
+    },
+    {
+      "name": "Address Book",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"My updated address book\",\n    \"ownerId\": \"{{userId}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addressbook/{{addressBookId1}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "addressbook",
+            "{{addressBookId1}}"
+          ]
+        },
+        "description": "Replace an address book"
+      },
+      "response": []
+    },
+    {
+      "name": "Address Book",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addressbook/{{addressBookId1}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "addressbook",
+            "{{addressBookId1}}"
+          ]
+        },
+        "description": "Delete an address book"
+      },
+      "response": []
+    },
+    {
+      "name": "Contact To Address Book",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"My first address book\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addressbook/{{addressBookId1}}/contact/{{contactId1}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "addressbook",
+            "{{addressBookId1}}",
+            "contact",
+            "{{contactId1}}"
+          ]
+        },
+        "description": "Add a contact to an address book"
+      },
+      "response": []
+    },
+    {
+      "name": "Contact From Address Book",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addressbook/{{addressBookId1}}/contact/{{contactId1}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "addressbook",
+            "{{addressBookId1}}",
+            "contact",
+            "{{contactId1}}"
+          ]
+        },
+        "description": "Remove a contact from an address book"
+      },
+      "response": []
+    },
+    {
+      "name": "Unique Contacts",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "[\n    \"{{addressBookId1}}\",\n    \"{{addressBookId2}}\"\n]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addressbooks/contacts",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "addressbooks",
+            "contacts"
+          ]
+        },
+        "description": "Get a list of unique contacts from the given list of address books"
+      },
+      "response": []
+    },
+    {
+      "name": "Unassigned Contacts For User",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/user/{{userId}}/unassigned-contacts",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "user",
+            "{{userId}}",
+            "unassigned-contacts"
+          ]
+        },
+        "description": "Get a list of all contacts currently not contained in an address book"
+      },
+      "response": []
+    },
+    {
+      "name": "Contact",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Olympe de Gouge\",\n    \"ownerId\": \"{{userId}}\",\n    \"phoneNumbers\": [\n        \"+61 499 888 777\",\n        \"+61 2 8765 4321\"\n    ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/contact",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "contact"
+          ]
+        },
+        "description": "Create a new contact"
+      },
+      "response": []
+    },
+    {
+      "name": "Contact",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"phoneNumbers\": [\n        \"+61 444 444 444\"\n    ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/contact/{{contactId1}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "contact",
+            "{{contactId1}}"
+          ]
+        },
+        "description": "Partially update a contact"
+      },
+      "response": []
+    },
+    {
+      "name": "Contact",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/contact/{{contactId1}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "contact",
+            "{{contactId1}}"
+          ]
+        },
+        "description": "Delete a contact"
+      },
+      "response": []
+    }
+  ]
+}

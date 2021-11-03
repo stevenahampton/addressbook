@@ -1,0 +1,572 @@
+{
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "http://example.com",
+      "description": "",
+      "variables": {}
+    }
+  ],
+  "info": {
+    "version": "27e6ce8e-74eb-41b2-ad7d-373c04e1d33a",
+    "title": "Address Book",
+    "description": "# Address Book REST API\n\nThis Spring Boot application provides a range of endpoints for the maintenance of address books for multiple users\n\n* each user can have multiple address books\n* each address book can contain 0 or more contacts\n* each contact has a name and 0 or more phone numbers\n\n# Endpoints\n\n* The `baseUrl` variable should be set to `http://localhost:8081/api` when running in a docker container as described in the README",
+    "termsOfService": "",
+    "contact": {},
+    "license": {
+      "name": ""
+    }
+  },
+  "paths": {
+    "/user/{userId}": {
+      "get": {
+        "summary": "User",
+        "description": "Get the user matching the ID",
+        "operationId": "User",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/userId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "patch": {
+        "summary": "User",
+        "description": "Partially update a user",
+        "operationId": "User2",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "userId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "description": "Partially update a user",
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "name": "Germaine de Stael-Holstein"
+                }
+              },
+              "example": "{\n    \"name\": \"Germaine de Stael-Holstein\"\n}"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "User",
+        "description": "Delete a user",
+        "operationId": "User3",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "userId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/user": {
+      "post": {
+        "summary": "User",
+        "description": "Add a user",
+        "operationId": "User1",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "description": "Add a user",
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "name": "Germaine de Stael",
+                  "username": "germaine"
+                }
+              },
+              "example": "{\n    \"name\": \"Germaine de Stael\",\n    \"username\": \"germaine\"\n}"
+            }
+          }
+        }
+      }
+    },
+    "/addressbook/{addressBookId1}": {
+      "get": {
+        "summary": "Address Book",
+        "description": "Get the address book matching the ID",
+        "operationId": "AddressBook",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/addressBookId1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "patch": {
+        "summary": "Address Book",
+        "description": "Partially update an address book",
+        "operationId": "AddressBook7",
+        "parameters": [
+          {
+            "name": "addressBookId1",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "addressBookId1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "description": "Partially update an address book",
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "name": "My patched address book"
+                }
+              },
+              "example": "{\n    \"name\": \"My patched address book\"\n}"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Address Book",
+        "description": "Replace an address book",
+        "operationId": "AddressBook8",
+        "parameters": [
+          {
+            "name": "addressBookId1",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "addressBookId1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "description": "Replace an address book",
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "name": "My updated address book",
+                  "ownerId": "{{userId}}"
+                }
+              },
+              "example": "{\n    \"name\": \"My updated address book\",\n    \"ownerId\": \"{{userId}}\"\n}"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Address Book",
+        "description": "Delete an address book",
+        "operationId": "AddressBook9",
+        "parameters": [
+          {
+            "name": "addressBookId1",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "addressBookId1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/addressbooks": {
+      "get": {
+        "summary": "Address Books",
+        "description": "Get all address books matching the search criteria - a partial name search or an exact owner (user) ID search",
+        "operationId": "AddressBooks",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/nameSearch"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "example": "{{userId}}"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/addressbook": {
+      "post": {
+        "summary": "Address Book",
+        "description": "Add an address book",
+        "operationId": "AddressBook6",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "description": "Add an address book",
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "name": "My next address book",
+                  "ownerId": "{{userId}}"
+                }
+              },
+              "example": "{\n    \"name\": \"My next address book\",\n    \"ownerId\": \"{{userId}}\"\n}"
+            }
+          }
+        }
+      }
+    },
+    "/addressbook/{addressBookId1}/contact/{contactId1}": {
+      "post": {
+        "summary": "Contact To Address Book",
+        "description": "Add a contact to an address book",
+        "operationId": "ContactToAddressBook",
+        "parameters": [
+          {
+            "name": "addressBookId1",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "addressBookId1"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/contactId1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "description": "Add a contact to an address book",
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "name": "My first address book"
+                }
+              },
+              "example": "{\n    \"name\": \"My first address book\"\n}"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Contact From Address Book",
+        "description": "Remove a contact from an address book",
+        "operationId": "ContactFromAddressBook",
+        "parameters": [
+          {
+            "name": "addressBookId1",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "addressBookId1"
+            }
+          },
+          {
+            "name": "contactId1",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "contactId1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/addressbooks/contacts": {
+      "get": {
+        "summary": "Unique Contacts",
+        "description": "Get a list of unique contacts from the given list of address books",
+        "operationId": "UniqueContacts",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/user/{userId}/unassigned-contacts": {
+      "get": {
+        "summary": "Unassigned Contacts For User",
+        "description": "Get a list of all contacts currently not contained in an address book",
+        "operationId": "UnassignedContactsForUser",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "userId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/contact": {
+      "post": {
+        "summary": "Contact",
+        "description": "Create a new contact",
+        "operationId": "Contact",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "description": "Create a new contact",
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "name": "Olympe de Gouge",
+                  "ownerId": "{{userId}}",
+                  "phoneNumbers": [
+                    "+61 499 888 777",
+                    "+61 2 8765 4321"
+                  ]
+                }
+              },
+              "example": "{\n    \"name\": \"Olympe de Gouge\",\n    \"ownerId\": \"{{userId}}\",\n    \"phoneNumbers\": [\n        \"+61 499 888 777\",\n        \"+61 2 8765 4321\"\n    ]\n}"
+            }
+          }
+        }
+      }
+    },
+    "/contact/{contactId1}": {
+      "patch": {
+        "summary": "Contact",
+        "description": "Partially update a contact",
+        "operationId": "Contact15",
+        "parameters": [
+          {
+            "name": "contactId1",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "contactId1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "description": "Partially update a contact",
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "phoneNumbers": [
+                    "+61 444 444 444"
+                  ]
+                }
+              },
+              "example": "{\n    \"phoneNumbers\": [\n        \"+61 444 444 444\"\n    ]\n}"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Contact",
+        "description": "Delete a contact",
+        "operationId": "Contact16",
+        "parameters": [
+          {
+            "name": "contactId1",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "contactId1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "userId": {
+        "name": "userId",
+        "in": "path",
+        "required": true,
+        "style": "simple",
+        "schema": {
+          "type": "string",
+          "example": "userId"
+        }
+      },
+      "addressBookId1": {
+        "name": "addressBookId1",
+        "in": "path",
+        "required": true,
+        "style": "simple",
+        "schema": {
+          "type": "string",
+          "example": "addressBookId1"
+        }
+      },
+      "nameSearch": {
+        "name": "nameSearch",
+        "in": "query",
+        "required": true,
+        "style": "form",
+        "schema": {
+          "type": "string",
+          "example": "{{nameSearch}}"
+        }
+      },
+      "contactId1": {
+        "name": "contactId1",
+        "in": "path",
+        "required": true,
+        "style": "simple",
+        "schema": {
+          "type": "string",
+          "example": "contactId1"
+        }
+      }
+    }
+  },
+  "security": [],
+  "tags": [],
+  "externalDocs": {
+    "url": "",
+    "description": ""
+  },
+  "warnings": []
+}
