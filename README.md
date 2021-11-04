@@ -8,7 +8,10 @@ This Spring Boot application provides a range of endpoints for the maintenance o
 
 # Endpoints
 
-* All available endpoints are documented in the included Postman collection
+* All endpoints can be viewed using the Swagger docs available at `<base-url>/api/swagger-ui/` where `<base-url>` is
+  `http://localhost:8080` if running directly or `http://localhost:8081` if running in a docker container as described
+  below
+* The endpoints are also documented in the included Postman collection
   file `src/test/resources/Address Book.postman_collection.json`
 * The same endpoints are contained in the OpenAPI file `src/test/resources/Address Book.open-api.json`
 * All endpoints are prefixed with `/api/`
