@@ -30,8 +30,7 @@ public class ApplicationControllerAdvice {
      * @return the throwable's message
      */
     private String logThrowable(Throwable ex) {
-        LoggingHelper.logThrowable(ex, log, "{}caught DataIntegrityException",
-                loggingHelper.getCurrentUsernameAsLoggingPrefix());
+        LoggingHelper.logThrowable(ex, log, "{}caught Throwable", loggingHelper.getCurrentUsernameAsLoggingPrefix());
         return ex.getLocalizedMessage();
     }
 
